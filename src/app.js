@@ -38,7 +38,11 @@ const startApp = () => {
   // meshes
   const geometry = new THREE.IcosahedronGeometry(1, 5)
   // console.log(geometry)
-  const material = new THREE.RawShaderMaterial({
+    // position => position verteces
+    // uv => vec2 cordonate on 2d space too add texture
+    // normals =>  orientation of a vertex , it's a vec3
+
+  const material = new THREE.ShaderMaterial({
     vertexShader: vertexShader,
     fragmentShader: fragmentShader,
   })

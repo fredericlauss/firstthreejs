@@ -1,11 +1,11 @@
 // attribute are diff for each vertex // uniform are the same
-attribute vec3 position;
+// attribute vec3 position;
 
-uniform mat4 projectionMatrix;
-uniform mat4 modelViewMatrix;
+// uniform mat4 projectionMatrix;
+// uniform mat4 modelViewMatrix;
 
-uniform mat4 modelMatrix;
-uniform mat4 viewMatrix;
+// uniform mat4 modelMatrix;
+// uniform mat4 viewMatrix;
 
 // uniform float Utime;
 
@@ -17,4 +17,8 @@ void main() {
 
 	// MVP ( order maters)
 	// gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4( position, 1.0 );
+
+	vec4 modelViewPosition = modelViewMatrix * vec4( position, 1.0 );
+	vec4 projectedPosition = projectionMatrix * modelViewPosition;
+	gl_Position = projectedPosition;
 }
