@@ -3,8 +3,12 @@
 // }
 
 // i can use uniform here but float need precision and can't use attribute here ( it's for vertex stuff )
-precision mediump float;
-uniform float Utime;
+// precision mediump float;
+uniform float uTime;
+
+varying vec3 vPosition;
+varying vec3 vNormals;
+varying vec2 vUv;
 
 void main() {
     // vec3 color = vec3(0.0, sum(0.0, 0.0), 1.0);
@@ -33,5 +37,7 @@ void main() {
     // color.grb = vec3(1.0, 0.0, 1.0);
 
 	// gl_FragColor = vec4( color.xyz, 1.0 );
+    // gl_FragColor = vec4( mix(vec3(0.0), vec3(1.0), vUv.x), 1.0 );
+    // gl_FragColor = vec4( vUv.xxx, 1.0 );
     gl_FragColor = vec4( 1.0, 0.0, 0.0, 1.0 );
 }

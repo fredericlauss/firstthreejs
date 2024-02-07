@@ -36,7 +36,7 @@ const startApp = () => {
 
 
   // meshes
-  const geometry = new THREE.IcosahedronGeometry(1, 5)
+  const geometry = new THREE.PlaneGeometry(2, 2)
   // console.log(geometry)
     // position => position verteces
     // uv => vec2 cordonate on 2d space too add texture
@@ -46,7 +46,7 @@ const startApp = () => {
     vertexShader: vertexShader,
     fragmentShader: fragmentShader,
   })
-  material.uniforms.Utime = { value: 0}
+  material.uniforms.uTime = {value: 0}
   // console.log(material)
 
   const ico = new THREE.Mesh(geometry, material)
@@ -91,6 +91,8 @@ const startApp = () => {
   addPass(outputPass)
 
   useTick(({ timestamp, timeDiff }) => {
+    const time = timestamp / 1000
+    material.uniforms.utime.value = time
   })
 }
 

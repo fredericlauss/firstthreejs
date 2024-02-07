@@ -9,7 +9,18 @@
 
 // uniform float Utime;
 
+uniform float uTime;
+
+varying vec3 vPosition;
+varying vec3 vNormals;
+varying vec2 vUv;
+
 void main() {
+
+	vPosition = position;
+	vNormals = normal;
+	vUv = uv;
+
 	// transform => position, scale and rotation
 	// modelMatrix => position, scale and rotation of model
 	// wiewMatrix => position, orientation of caméra
