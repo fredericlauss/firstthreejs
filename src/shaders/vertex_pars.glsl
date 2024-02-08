@@ -1,23 +1,6 @@
-// attribute are diff for each vertex // uniform are the same
-// attribute vec3 position;
-
-// uniform mat4 projectionMatrix;
-// uniform mat4 modelViewMatrix;
-
-// uniform mat4 modelMatrix;
-// uniform mat4 viewMatrix;
-
-// uniform float Utime;
 
 uniform float uTime;
-
-varying vec3 vPosition;
-varying vec3 vNormals;
-varying vec2 vUv;
 varying float vDisplacement;
-
-
-#define PI 3.141592653589793238462643383279502884197
 
 //	Classic Perlin 3D Noise 
 //	by Stefan Gustavson
@@ -117,32 +100,4 @@ float fit(float unscaled, float originalMin, float originalMax, float minAllowed
 
 float wave(vec3 position) {
     return fit(smoothMod(position.y * 6.0, 1.0, 1.5), 0.35, 0.6, 0.0, 1.0);
-}
-
-void main() {
-	//
-	vec3 coordinates = normal;
-    coordinates.y += uTime;
-    vec3 noisePatern = vec3(noise(coordinates));
-    float pattern = wave(noisePatern);
-	vDisplacement = pattern;
-
-	// varyings
-	vPosition = position;
-	vNormals = normal;
-	vUv = uv;
-
-	// transform => position, scale and rotation
-	// modelMatrix => position, scale and rotation of model
-	// wiewMatrix => position, orientation of caméra
-	// projectionMatrix => project our object into screan ( aspect ratio and perspective)
-
-	// MVP ( order maters)
-	// gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4( position, 1.0 );
-	float vDisplacement = vDisplacement / 3.0;
-	vec3 newPostion = position + normal * vDisplacement;
-
-	vec4 modelViewPosition = modelViewMatrix * vec4( newPostion, 1.0 );
-	vec4 projectedPosition = projectionMatrix * modelViewPosition;
-	gl_Position = projectedPosition;
 }
