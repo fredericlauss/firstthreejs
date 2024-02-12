@@ -43,7 +43,7 @@ const startApp = () => {
 
 
   // meshes
-  const geometry = new THREE.IcosahedronGeometry(1, 300)
+  const geometry = new THREE.IcosahedronGeometry(1, 250)
   // console.log(geometry)
     // position => position verteces
     // uv => vec2 cordonate on 2d space too add texture
